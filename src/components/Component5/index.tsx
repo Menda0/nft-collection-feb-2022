@@ -1,14 +1,12 @@
-import { type } from "os";
 import React, { Component } from "react";
 
 type ComponentProps = {
-
+    defaultMessage: string
 }
 
 type ComponentState = {
     message: string
 }
-
 
 export class Component5 extends React.Component<ComponentProps,ComponentState> {
 
@@ -22,7 +20,7 @@ export class Component5 extends React.Component<ComponentProps,ComponentState> {
         super(props)
 
         this.state = {
-            message: "This is a default message"
+            message: this.props.defaultMessage
         }
     }
 
@@ -36,6 +34,14 @@ export class Component5 extends React.Component<ComponentProps,ComponentState> {
         this.setState({
             message: e.target.value
         })
+    }
+
+    componentDidMount(){
+        console.log("Component did mount ...")
+    }
+
+    componentDidUpdate(){
+        console.log("Component did update ...")
     }
 
     render() {
