@@ -14,7 +14,7 @@ const initialState:CollectionsState = {
 }
 
 type SetSelectedCollectionActionType = {
-    selectedCollection: Collection
+    selectedCollection?: Collection
 }
 
 export const actions = {

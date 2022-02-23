@@ -6,13 +6,17 @@ type NFTCollectionItemState = {
 }
 
 type NFTCollectionItemProps = {
-    collection: Collection
+    collection?: Collection
 }
 
-export default class NFTCollectionItem extends React.Component{
+export default class NFTCollectionItem 
+    extends React.Component<NFTCollectionItemProps, NFTCollectionItemState>{
     render(){
         return (
-            <h1>NFT Collection List</h1>
+            <>
+            <p><b>Name:</b> {this.props.collection?.name} </p>
+            <p><b>Description:</b> {this.props.collection?.description}</p>
+        </>
         )
     }
 }

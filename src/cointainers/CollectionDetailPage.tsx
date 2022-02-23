@@ -4,6 +4,7 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import * as collections from "../store/collections.duck"
 import { RootState } from "../store"
+import NFTCollectionItem from "../components/NFTCollectionItem"
 
 const useSelectCollection = () => {
     // Get route parameter
@@ -14,6 +15,13 @@ const useSelectCollection = () => {
     const selectedCollection = useSelector(
         (state: RootState) => state.collections.selectedCollection
     )
+
+    useEffect(() => {
+        const payload = {
+            selectedCollection: undefined
+        }
+        dispatch(collections.actions.setSelectedCollection(payload))
+    }, [])
 
     useEffect(() => {
         // GET https://api.opensea.io/api/v1/collection/<collectionId>
@@ -36,10 +44,5 @@ export const CollectionDetailPage = () => {
 
     const selectedCollection = useSelectCollection()
 
-    return (
-    <>
-        <p><b>Name:</b> {selectedCollection?.name} </p>
-        <p><b>Description:</b> {selectedCollection?.description}</p>
-    </>
-    )
+    return <NFTCollectionItem collection={selectedCollection} />
 }
