@@ -14,8 +14,8 @@ type ComponentProps = {
 //     }
 // }
 
-const useMessage = (props:ComponentProps) => {
-    const [message,setMessage] = useState<String>(props.message)
+const useMessage = (defaultMessage:string) => {
+    const [message,setMessage] = useState<String>(defaultMessage)
 
     // ComponentDidMout <=> []
     useEffect(() => {
@@ -52,7 +52,7 @@ export const Component9 = (props:ComponentProps) => {
     // console.log('Render functional component ...')
 
 
-    const {message, setMessage} = useMessage(props)
+    const {message, setMessage} = useMessage(props.message)
 
     console.log('Render functional component ...')
     return (
